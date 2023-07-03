@@ -37,10 +37,6 @@ def chatbot_query(request: QueryRequest, index: int = 0):
     result = ""
 
     try:
-        # api_key = api_key
-        # search_engine_id = search_engine_id
-        # search_url = search_url
-
         params = {
             "key": api_key,
             "cx": search_engine_id,
@@ -51,12 +47,10 @@ def chatbot_query(request: QueryRequest, index: int = 0):
 
         response = requests.get(search_url, params=params)
         data = response.json()
-        # print(data)
 
         if "items" in data:
-            # first_result = data["items"][0]
-            # result = first_result["snippet"]
-            result = data
+            first_result = data["items"][0]
+            result = first_result["snippet"]
         else:
             result = fallback
 
