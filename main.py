@@ -33,6 +33,7 @@ class QueryRequest(BaseModel):
 def read_root():
     return {"Health_Check": "Ok"}
 
+
 @app.post("/chatbot_query")
 def chatbot_query(request: QueryRequest, index: int = 0):
     fallback = "Sorry, I cannot think of a reply for that."
@@ -40,11 +41,7 @@ def chatbot_query(request: QueryRequest, index: int = 0):
 
     try:
         service = build("customsearch", "v1", developerKey=api_key)
-        response = (
-            service.cse()
-            .list(cx=search_engine_id, q=request.query)
-            .execute()
-        )
+        response = service.cse().list(cx=search_engine_id, q=request.query).execute()
 
         for item in response["items"]:
             result.append(
