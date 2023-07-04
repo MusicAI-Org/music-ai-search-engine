@@ -4,3 +4,4 @@ requests==2.31.0
 lxml==4.9.2
 googlesearch-python==1.2.3
 beautifulsoup4==4.12.2
+google-api-python-client==2.91.0
