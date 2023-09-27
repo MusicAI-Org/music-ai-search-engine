@@ -6,16 +6,13 @@ from config import Settings
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-
-import requests
-
 app = FastAPI()
 setting = Settings()
 
 api_key = setting.API_KEY
 search_engine_id = setting.SEARCH_ENGINE_ID
 
-origins = ["http://localhost:3000", "https://music-ai.vercel.app/"]
+origins = ["http://localhost:3000", "https://music-ai.vercel.app"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
